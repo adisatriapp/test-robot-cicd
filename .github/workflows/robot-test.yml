@@ -1,0 +1,41 @@
+name: Robot Framework Reporter Lelang Mobil
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Check working directory
+        run: pwd
+      - name: Run tests
+        uses: joonvena/robotframework-docker-action@master
+        with:
+          robot_tests_dir: tests/
+      - name: Store test report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reports
+          path: reports
+
+  report:
+    if: always()
+    needs: [ test ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Download test report
+        uses: actions/download-artifact@v4
+        with:
+          name: reports
+      - name: Output report
+        uses: joonvena/robotframework-reporter-action@v2.5
+        with:
+          gh_access_token: ${{ secrets.GITHUB_TOKEN }}
