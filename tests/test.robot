@@ -1,28 +1,39 @@
 *** Settings ***
-Library    SeleniumLibrary
-Library    OperatingSystem
+Library  SeleniumLibrary
 
-Suite Setup    Set Selenium Timeouts
+Test Setup      Start Headless Browser
+Test Teardown   Close Browser
 
 *** Variables ***
-${TIMEOUT}    30 seconds
+@{chrome_arguments}    --disable-infobars    --headless
+...    --disable-gpu   --no-sandbox   --window-size=1920,1080
+${URL}  https://duckduckgo.com/
+${TEXT}  DuckDuckGo
 
 *** Test Cases ***
-Try access google
-    Open Google
-    Search on google    Tahu Bulat
-    Set Selenium Implicit Wait    ${TIMEOUT}
+Run Page Check
+    [Documentation]  This test will check if a certain text 
+    ...  can be found on a certain page.
+    Check if ${URL} contains ${TEXT}
 
 *** Keywords ***
-Set Selenium Timeouts
-    Set Selenium Speed    0.5
-    Set Selenium Timeout    ${TIMEOUT}
+Check if ${URL} contains ${TEXT}
+    Log  Check if ${URL} contains "${TEXT}"  console=True
+    Wait Until Page Contains Element  //*[contains(text(),'${TEXT}')]
 
-Open Google
-    Open Browser    https://www.google.com/    chrome    headless=True
-    Maximize Browser Window
+Start Headless Browser
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    ${options}=     Call Method     ${chrome_options}    to_capabilities
+    ${chrome_options}=    Set Chrome Options
+    Create Webdriver    Chrome    options=${chrome_options}
+    Go To    ${URL}
 
-Search on google
-    [Arguments]    ${val}
-    Input Text    //textarea[@id='APjFqb']    ${val}
-    Press Keys    //textarea[@id='APjFqb']    ENTER
+Set Chrome Options
+    [Documentation]    Set Chrome options for headless mode
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    FOR    ${option}    IN    @{chrome_arguments}
+        Call Method    ${options}    add_argument    ${option}
+    END
+    [Return]    ${options}

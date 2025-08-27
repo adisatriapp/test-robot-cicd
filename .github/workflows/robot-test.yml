@@ -1,76 +1,44 @@
-name: Robot Framework
+name: Run Robot Test
+
 on:
-  pull_request:
-    branches: [ main ]
-  push:
-    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      run-id:
+        description: "workflow run identifier"
+        required: false
+      url:
+        description: "Which URL to check"
+        required: false
+        default: "https://duckduckgo.com/"
+      text:
+        description: "Which text to check on the URL"
+        required: false
+        default: "DuckDuckGo"
+env:
+  RUN_ID: ${{ github.event.inputs.run-id }}
+  URL: ${{ github.event.inputs.url }}
+  TEXT: ${{ github.event.inputs.text }}
 
 jobs:
-  test:
+  printInputs:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Check working directory
-        run: pwd
-
-      - name: setup python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
       - run: |
-          python -m pip install --upgrade pip
+          echo "This test run with ID: ${{ env.RUN_ID }} will check if the text ${{ env.TEXT }} is present on ${{ env.URL }}"
 
-      - name: Install Chrome
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install -y wget
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i google-chrome-stable_current_amd64.deb
-          sudo apt-get install -f
-        
-      - name: Set up ChromeDriver
-        uses: nanasess/setup-chromedriver@v2
+  robot_test:
+    runs-on: ubuntu-latest
+    name: ${{github.event.inputs.run-id}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Robot Framework
+        uses: joonvena/robotframework-docker-action@v1.0
         with:
-          chromedriver-version: '139.0.7258.138'  # Sesuaikan versi jika perlu
-        env:
-          CHROME_BIN: /usr/bin/google-chrome-stable
-        
-      - name: Check Chrome Version
-        run: google-chrome-stable --version
-
-      - name: Check ChromeDriver Version
-        run: chromedriver --version
-
-      - name: Set permissions for the reports directory
-        run: chmod -R 777 reports
-      
-      - name: Install Requirements
-        run: pip install -r requirements.txt
-
-      - name: Run Test
-        run: robot -d reports tests/
-      
-      
-      - name: Store test report
-        uses: actions/upload-artifact@v4
+          robot_options: "-v URL:${{ env.URL }} -v TEXT:${{ env.TEXT }}"
+      - name: Upload test results
+        uses: actions/upload-artifact@v1
         if: always()
         with:
           name: reports
-          path: reports
-
-  report:
-    if: always()
-    needs: [ test ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Download test report
-        uses: actions/download-artifact@v4
-        with:
-          name: reports
-      - name: Output report
-        uses: joonvena/robotframework-reporter-action@v2.5
-        with:
-          gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ github.workspace }}/reports
