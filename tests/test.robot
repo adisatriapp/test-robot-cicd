@@ -19,7 +19,7 @@ Set Selenium Timeouts
     Set Selenium Timeout    ${TIMEOUT}
 
 Open Google
-    Open Browser    https://www.google.com/    chrome    headless=True    disable-gpu=True    window-size=1920x1080
+    Open Browser    https://www.google.com/    chrome    headless=True
     Maximize Browser Window
 
 Search on google
