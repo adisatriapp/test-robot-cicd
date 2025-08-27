@@ -1,6 +1,8 @@
 *** Settings ***
-Library    SeleniumLibrary
+Resource    ../resources/imports.resource
+# Resource    ../resources/google.resource
 
 *** Test Cases ***
 Try access google
-    Open Browser    https://www.google.com/    chrome
+    Open Google
+    Search on google    Tahu Bulat
