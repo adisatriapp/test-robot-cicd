@@ -28,7 +28,7 @@ jobs:
         uses: joonvena/robotframework-docker-action@master
         with:
           robot_tests_dir: tests/
-          robot_options: '--listener allure_robotframework --outputdir reports ./tests'
+          robot_options: --listener allure-robotframework -d reports ./tests
       
       - name: Store test report
         uses: actions/upload-artifact@v4
