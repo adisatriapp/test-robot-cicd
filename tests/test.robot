@@ -11,14 +11,15 @@ ${TIMEOUT}    30 seconds
 Try access google
     Open Google
     Search on google    Tahu Bulat
+    Set Selenium Implicit Wait    ${TIMEOUT}
 
 *** Keywords ***
 Set Selenium Timeouts
     Set Selenium Speed    0.5
-    Set Selenium Timeout    30 seconds
+    Set Selenium Timeout    ${TIMEOUT}
 
 Open Google
-    Open Browser    https://www.google.com/    chrome    headless=True
+    Open Browser    https://www.google.com/    chrome    headless=True    disable-gpu=True    window-size=1920x1080
     Maximize Browser Window
 
 Search on google

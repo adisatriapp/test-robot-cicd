@@ -36,6 +36,11 @@ jobs:
         env:
           CHROME_BIN: /usr/bin/google-chrome-stable
         
+      - name: Check Chrome Version
+        run: google-chrome-stable --version
+
+      - name: Check ChromeDriver Version
+        run: chromedriver --version
 
       - name: Set permissions for the reports directory
         run: chmod -R 777 ${{ github.workspace }}/reports
@@ -46,6 +51,8 @@ jobs:
           BROWSER: chrome
           ROBOT_TESTS_DIR: ${{ github.workspace }}/tests
           ROBOT_REPORTS_DIR: ${{ github.workspace }}/reports
+        with:
+          docker-image: selenium/standalone-chrome:latest
       
       - name: Store test report
         uses: actions/upload-artifact@v4
