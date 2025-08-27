@@ -24,7 +24,9 @@ jobs:
       - name: Set up ChromeDriver
         uses: nanasess/setup-chromedriver@v2
 
-
+      - name: Set permissions for the reports directory
+        run: chmod -R 777 ${{ github.workspace }}/reports
+      
       - name: Run tests
         uses: joonvena/robotframework-docker-action@v0.1
         env:
