@@ -1,4 +1,4 @@
-name: Robot Framework Reporter Lelang Mobil
+name: Robot Framework
 on:
   pull_request:
     branches: [ main ]
@@ -26,7 +26,7 @@ jobs:
         uses: joonvena/robotframework-docker-action@master
         with:
           robot_tests_dir: tests/
-          robot_options: --listener allure_robotframework -d reports
+          robot_options: --listener allure-robotframework -d reports
       
       - name: Store test report
         uses: actions/upload-artifact@v4
