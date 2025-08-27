@@ -20,9 +20,7 @@ jobs:
           python-version: '3.11'
       - run: |
           python -m pip install --upgrade pip
-       
-      - name: Install Allure adapter
-        run: pip install allure-robotframework
+          pip install allure-robotframework
 
       - name: Run tests
         uses: joonvena/robotframework-docker-action@master
