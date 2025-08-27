@@ -43,7 +43,7 @@ jobs:
         run: chromedriver --version
 
       - name: Set permissions for the reports directory
-        run: chmod -R 777 ${{ github.workspace }}/reports
+        run: chmod -R 777 reports
       
       - name: Install Requirements
         run: pip install -r requirements.txt
@@ -55,7 +55,7 @@ jobs:
         run: pip show robotframework-seleniumlibrary
 
       - name: Run Test
-        run: robot -d ${{ github.workspace }}/reports ${{ github.workspace }}/tests
+        run: robot -d reports tests/
       
       
       - name: Store test report
