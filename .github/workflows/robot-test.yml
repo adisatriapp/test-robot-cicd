@@ -25,7 +25,7 @@ jobs:
         run: pip install allure-robotframework
 
       - name: Run tests
-        uses: joonvena/robotframework-docker-action@v1.0
+        uses: joonvena/robotframework-docker-action@master
         with:
           robot_tests_dir: tests/
           robot_options: '--listener allure_robotframework --outputdir reports ./tests'
