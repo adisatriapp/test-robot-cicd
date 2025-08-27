@@ -37,7 +37,7 @@ jobs:
         with:
           robot_options: "-v URL:${{ env.URL }} -v TEXT:${{ env.TEXT }}"
       - name: Upload test results
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: reports
