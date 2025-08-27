@@ -22,7 +22,7 @@ jobs:
           python -m pip install --upgrade pip
 
       - name: Run tests
-        uses: joonvena/robotframework-docker-action@master
+        uses: joonvena/robotframework-docker-action@v1.0
         with:
           robot_tests_dir: tests/
       
