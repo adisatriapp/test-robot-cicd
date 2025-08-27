@@ -22,9 +22,12 @@ jobs:
           python -m pip install --upgrade pip
 
       - name: Run tests
-        uses: joonvena/robotframework-docker-action@v1.0
-        with:
-          robot_tests_dir: tests/
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/opt/robotframework/tests \
+            -v ${{ github.workspace }}/reports:/opt/robotframework/reports \
+            ppodgorsek/robot-framework:7.2.1 \
+            robot --outputdir /opt/robotframework/reports tests/
       
       - name: Store test report
         uses: actions/upload-artifact@v4
