@@ -48,12 +48,6 @@ jobs:
       - name: Install Requirements
         run: pip install -r requirements.txt
 
-      - name: Check Robot Version
-        run: robot --version
-        
-      - name: Check Robotframework-selenium Version
-        run: pip show robotframework-seleniumlibrary
-
       - name: Run Test
         run: robot -d reports tests/
       
