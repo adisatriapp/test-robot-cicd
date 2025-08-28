@@ -1,4 +1,6 @@
 *** Settings ***
+Library    SeleniumLibrary
+Variables    ../test-data/data.py
 Resource    imports.robot
 
 *** Variables ***
