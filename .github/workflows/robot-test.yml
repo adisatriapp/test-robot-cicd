@@ -37,18 +37,9 @@ jobs:
           name: report
           path: ./robotframework/reports
 
-  report:
-    if: always()
-    needs: [ test ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Download test report
-        uses: actions/download-artifact@v4
+      - name: Deploy report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: report
-      - name: Output report
-        uses: joonvena/robotframework-reporter-action@v2.5
-        with:
-          gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./robotframework/reports
+          publish_branch: gh-pages
