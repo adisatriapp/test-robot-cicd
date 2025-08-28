@@ -30,12 +30,9 @@ jobs:
         working-directory: ./robotframework
         run: robot -d reports tests/
 
-      - name: Store test report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: report
-          path: ./robotframework/reports
+      - name: Rename report.html to index.html
+        run: |
+          cp robotframework/reports/report.html robotframework/reports/index.html
 
       - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
