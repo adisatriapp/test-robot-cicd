@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../resources/keyword.robot
+Resource    ../resources/keyword.resource
 
 Test Setup      Start Headless Browser
 Test Teardown   Close Browser

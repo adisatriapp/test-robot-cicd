@@ -1,7 +1,7 @@
 *** Settings ***
 Library    SeleniumLibrary
 Variables    ../test-data/data.py
-Resource    imports.robot
+Resource    imports.resource
 
 *** Variables ***
 @{chrome_arguments}    --disable-infobars    --headless
