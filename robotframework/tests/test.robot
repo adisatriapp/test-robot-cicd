@@ -7,8 +7,7 @@ Test Teardown   Close Browser
 
 *** Test Cases ***
 Run Page Check
-    [Documentation]  This test will check if a certain text 
-    ...  can be found on a certain page.
-    Check if ${URL} contains ${TEXT}
+    [Documentation]  This test will find tahu bulat on google
+    Search Tahu Bulat on Google
 
 

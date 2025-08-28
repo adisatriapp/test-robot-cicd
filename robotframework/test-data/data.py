@@ -1,2 +1,2 @@
-URL = "https://duckduckgo.com/"
-TEXT = "DuckDuckGo"
+URL = "https://www.google.com/"
+TEXT = "Tahu bulat"

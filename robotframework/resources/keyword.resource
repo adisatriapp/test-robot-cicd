@@ -8,6 +8,10 @@ Resource    imports.resource
 ...    --disable-gpu   --no-sandbox   --window-size=1920,1080
 
 *** Keywords ***
+Search Tahu Bulat on Google
+    Input Text    //textarea[@id='APjFqb']    Tahu Bulat
+    Press Keys    //textarea[@id='APjFqb']    ENTER
+
 Check if ${URL} contains ${TEXT}
     Log  Check if ${URL} contains "${TEXT}"  console=True
     Wait Until Page Contains Element  //*[contains(text(),'${TEXT}')]
