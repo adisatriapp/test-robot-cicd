@@ -25,29 +25,17 @@ jobs:
           pip install robotframework-seleniumlibrary
           pip install selenium
           pip install webdriver-manager
-          pip install allure-robotframework
-          sudo apt-get update
-          sudo apt-get install -y allure
-
-      - name: Run Robot Framework tests with Allure listener
+          
+      - name: Run Robot Framework tests
         working-directory: ./robotframework
-        run: |
-          mkdir -p allure-results
-          robot --listener allure_robotframework;allure-results tests/
-  
-      - name: Generate Allure Report
-        run: |
-          allure generate robotframework/allure-results -o robotframework/allure-report --clean
+        run: robot -d reports tests/
 
-      - name: Upload Allure Report as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: robotframework/allure-report/
-
-      - name: Deploy Allure Report to GitHub Pages
+      - name: Rename report.html to index.html
+        run: |
+          cp robotframework/reports/report.html robotframework/reports/index.html
+      - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./robotframework/reports
           publish_branch: gh-pages
-          publish_dir: ./robotframework/allure-report
