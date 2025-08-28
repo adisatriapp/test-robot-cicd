@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.11.13 on linux)" generated="2025-08-28T16:29:10.080834" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.11.13 on linux)" generated="2025-08-28T16:38:19.648678" rpa="false" schemaversion="5">
 <suite id="s1" name="Tests" source="/home/runner/work/test-robot-cicd/test-robot-cicd/robotframework/tests">
 <suite id="s1-s1" name="Test" source="/home/runner/work/test-robot-cicd/test-robot-cicd/robotframework/tests/test.robot">
 <test id="s1-s1-t1" name="Run Page Check" line="9">
 <kw name="Start Headless Browser" owner="keyword" type="SETUP">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-28T16:29:10.273778" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7fb9bc8d0990&gt;</msg>
+<msg time="2025-08-28T16:38:19.858074" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7feb22236790&gt;</msg>
 <var>${chrome_options}</var>
 <arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
 <arg>sys, selenium.webdriver</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-28T16:29:10.273494" elapsed="0.000323"/>
+<status status="PASS" start="2025-08-28T16:38:19.857806" elapsed="0.000307"/>
 </kw>
 <kw name="Call Method" owner="BuiltIn">
 <arg>${chrome_options}</arg>
 <arg>add_argument</arg>
 <arg>headless</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-08-28T16:29:10.273958" elapsed="0.000147"/>
+<status status="PASS" start="2025-08-28T16:38:19.858254" elapsed="0.000144"/>
 </kw>
 <kw name="Call Method" owner="BuiltIn">
 <arg>${chrome_options}</arg>
 <arg>add_argument</arg>
 <arg>disable-gpu</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-08-28T16:29:10.274240" elapsed="0.000154"/>
+<status status="PASS" start="2025-08-28T16:38:19.858515" elapsed="0.000176"/>
 </kw>
 <kw name="Call Method" owner="BuiltIn">
-<msg time="2025-08-28T16:29:10.274672" level="INFO">${options} = {'browserName': 'chrome', 'pageLoadStrategy': &lt;PageLoadStrategy.normal: 'normal'&gt;, 'goog:chromeOptions': {'extensions': [], 'args': ['headless', 'disable-gpu']}}</msg>
+<msg time="2025-08-28T16:38:19.858984" level="INFO">${options} = {'browserName': 'chrome', 'pageLoadStrategy': &lt;PageLoadStrategy.normal: 'normal'&gt;, 'goog:chromeOptions': {'extensions': [], 'args': ['headless', 'disable-gpu']}}</msg>
 <var>${options}</var>
 <arg>${chrome_options}</arg>
 <arg>to_capabilities</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-08-28T16:29:10.274504" elapsed="0.000197"/>
+<status status="PASS" start="2025-08-28T16:38:19.858807" elapsed="0.000205"/>
 </kw>
 <kw name="Set Chrome Options" owner="keyword">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-08-28T16:29:10.275326" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7fb9bc8d2c10&gt;</msg>
+<msg time="2025-08-28T16:38:19.859598" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7feb22296950&gt;</msg>
 <var>${options}</var>
 <arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
 <arg>sys, selenium.webdriver</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-08-28T16:29:10.275100" elapsed="0.000255"/>
+<status status="PASS" start="2025-08-28T16:38:19.859404" elapsed="0.000247"/>
 </kw>
 <for flavor="IN">
 <iter>
@@ -50,10 +50,10 @@
 <arg>add_argument</arg>
 <arg>${option}</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-08-28T16:29:10.275696" elapsed="0.000147"/>
+<status status="PASS" start="2025-08-28T16:38:19.859995" elapsed="0.000148"/>
 </kw>
 <var name="${option}">--disable-infobars</var>
-<status status="PASS" start="2025-08-28T16:29:10.275594" elapsed="0.000294"/>
+<status status="PASS" start="2025-08-28T16:38:19.859889" elapsed="0.000300"/>
 </iter>
 <iter>
 <kw name="Call Method" owner="BuiltIn">
@@ -61,10 +61,10 @@
 <arg>add_argument</arg>
 <arg>${option}</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-08-28T16:29:10.276057" elapsed="0.000132"/>
+<status status="PASS" start="2025-08-28T16:38:19.860358" elapsed="0.000130"/>
 </kw>
 <var name="${option}">--headless</var>
-<status status="PASS" start="2025-08-28T16:29:10.275976" elapsed="0.000279"/>
+<status status="PASS" start="2025-08-28T16:38:19.860275" elapsed="0.000260"/>
 </iter>
 <iter>
 <kw name="Call Method" owner="BuiltIn">
@@ -72,10 +72,10 @@
 <arg>add_argument</arg>
 <arg>${option}</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-08-28T16:29:10.276437" elapsed="0.000147"/>
+<status status="PASS" start="2025-08-28T16:38:19.860730" elapsed="0.000136"/>
 </kw>
 <var name="${option}">--disable-gpu</var>
-<status status="PASS" start="2025-08-28T16:29:10.276348" elapsed="0.000280"/>
+<status status="PASS" start="2025-08-28T16:38:19.860632" elapsed="0.000278"/>
 </iter>
 <iter>
 <kw name="Call Method" owner="BuiltIn">
@@ -83,10 +83,10 @@
 <arg>add_argument</arg>
 <arg>${option}</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-08-28T16:29:10.276786" elapsed="0.000131"/>
+<status status="PASS" start="2025-08-28T16:38:19.861069" elapsed="0.000128"/>
 </kw>
 <var name="${option}">--no-sandbox</var>
-<status status="PASS" start="2025-08-28T16:29:10.276710" elapsed="0.000247"/>
+<status status="PASS" start="2025-08-28T16:38:19.860992" elapsed="0.000245"/>
 </iter>
 <iter>
 <kw name="Call Method" owner="BuiltIn">
@@ -94,65 +94,65 @@
 <arg>add_argument</arg>
 <arg>${option}</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-08-28T16:29:10.277109" elapsed="0.000146"/>
+<status status="PASS" start="2025-08-28T16:38:19.861395" elapsed="0.000128"/>
 </kw>
 <var name="${option}">--window-size=1920,1080</var>
-<status status="PASS" start="2025-08-28T16:29:10.277036" elapsed="0.000260"/>
+<status status="PASS" start="2025-08-28T16:38:19.861316" elapsed="0.000246"/>
 </iter>
 <var>${option}</var>
 <value>@{chrome_arguments}</value>
-<status status="PASS" start="2025-08-28T16:29:10.275427" elapsed="0.001907"/>
+<status status="PASS" start="2025-08-28T16:38:19.859732" elapsed="0.001867"/>
 </for>
 <return>
 <value>${options}</value>
-<status status="PASS" start="2025-08-28T16:29:10.277395" elapsed="0.000045"/>
+<status status="PASS" start="2025-08-28T16:38:19.861678" elapsed="0.000047"/>
 </return>
-<msg time="2025-08-28T16:29:10.277561" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7fb9bc8d2c10&gt;</msg>
+<msg time="2025-08-28T16:38:19.861847" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7feb22296950&gt;</msg>
 <var>${chrome_options}</var>
 <doc>Set Chrome options for headless mode</doc>
-<status status="PASS" start="2025-08-28T16:29:10.274882" elapsed="0.002706"/>
+<status status="PASS" start="2025-08-28T16:38:19.859191" elapsed="0.002681"/>
 </kw>
 <kw name="Create Webdriver" owner="SeleniumLibrary">
-<msg time="2025-08-28T16:29:10.277841" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg time="2025-08-28T16:38:19.862124" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
 <arg>Chrome</arg>
 <arg>options=${chrome_options}</arg>
 <doc>Creates an instance of Selenium WebDriver.</doc>
-<status status="PASS" start="2025-08-28T16:29:10.277683" elapsed="7.041145"/>
+<status status="PASS" start="2025-08-28T16:38:19.861967" elapsed="6.666061"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-08-28T16:29:17.319261" level="INFO">Opening url 'https://duckduckgo.com/'</msg>
+<msg time="2025-08-28T16:38:26.528419" level="INFO">Opening url 'https://duckduckgo.com/'</msg>
 <arg>${URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-08-28T16:29:17.319043" elapsed="0.966979"/>
+<status status="PASS" start="2025-08-28T16:38:26.528238" elapsed="0.832810"/>
 </kw>
-<status status="PASS" start="2025-08-28T16:29:10.272819" elapsed="8.013328"/>
+<status status="PASS" start="2025-08-28T16:38:19.857152" elapsed="7.504020"/>
 </kw>
 <kw name="Check if ${URL} contains ${TEXT}" owner="keyword" source_name="Check if ${URL} contains ${TEXT}">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-08-28T16:29:18.287053" level="INFO">Check if https://duckduckgo.com/ contains "DuckDuckGo"</msg>
+<msg time="2025-08-28T16:38:27.362058" level="INFO">Check if https://duckduckgo.com/ contains "DuckDuckGo"</msg>
 <arg>Check if ${URL} contains "${TEXT}"</arg>
 <arg>console=True</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-08-28T16:29:18.286824" elapsed="0.000309"/>
+<status status="PASS" start="2025-08-28T16:38:27.361833" elapsed="0.000308"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>//*[contains(text(),'${TEXT}')]</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2025-08-28T16:29:18.287310" elapsed="0.590525"/>
+<status status="PASS" start="2025-08-28T16:38:27.362276" elapsed="0.524326"/>
 </kw>
-<status status="PASS" start="2025-08-28T16:29:18.286460" elapsed="0.591505"/>
+<status status="PASS" start="2025-08-28T16:38:27.361448" elapsed="0.525346"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-08-28T16:29:18.878265" elapsed="0.061063"/>
+<status status="PASS" start="2025-08-28T16:38:27.887125" elapsed="0.060924"/>
 </kw>
 <doc>This test will check if a certain text
 can be found on a certain page.</doc>
-<status status="PASS" start="2025-08-28T16:29:10.272082" elapsed="8.667338"/>
+<status status="PASS" start="2025-08-28T16:38:19.856425" elapsed="8.091718"/>
 </test>
-<status status="PASS" start="2025-08-28T16:29:10.102817" elapsed="8.837094"/>
+<status status="PASS" start="2025-08-28T16:38:19.670478" elapsed="8.278162"/>
 </suite>
-<status status="PASS" start="2025-08-28T16:29:10.081708" elapsed="8.858783"/>
+<status status="PASS" start="2025-08-28T16:38:19.649533" elapsed="8.299676"/>
 </suite>
 <statistics>
 <total>
@@ -166,6 +166,6 @@ can be found on a certain page.</doc>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-08-28T16:29:10.105817" level="WARN">Error in file '/home/runner/work/test-robot-cicd/test-robot-cicd/robotframework/resources/keyword.resource' on line 44: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-08-28T16:38:19.673508" level="WARN">Error in file '/home/runner/work/test-robot-cicd/test-robot-cicd/robotframework/resources/keyword.resource' on line 44: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
 </errors>
 </robot>
