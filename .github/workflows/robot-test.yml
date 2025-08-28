@@ -29,11 +29,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y allure
 
-          - name: Run Robot Framework tests with Allure listener
-          working-directory: ./robotframework
-          run: |
-            mkdir -p allure-results
-            robot --listener allure_robotframework;allure-results tests/
+      - name: Run Robot Framework tests with Allure listener
+        working-directory: ./robotframework
+        run: |
+          mkdir -p allure-results
+          robot --listener allure_robotframework;allure-results tests/
   
       - name: Generate Allure Report
         run: |
