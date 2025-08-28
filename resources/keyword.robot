@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    imports.resource
+Resource    imports.robot
 
 *** Variables ***
 @{chrome_arguments}    --disable-infobars    --headless

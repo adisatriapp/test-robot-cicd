@@ -1,4 +1,4 @@
 *** Settings ***
 Library    SeleniumLibrary
-Resource    keyword.resource
+Resource    keyword.robot
 Variables    ../test-data/data.py
