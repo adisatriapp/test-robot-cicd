@@ -16,9 +16,8 @@ jobs:
           node-version: 16
       - name: Install operating system dependencies
         run: |
-          npm install -g allure-commandline --save-dev |
-          rfbrowser init
-
+          npm install -g allure-commandline --save-dev 
+          
       - name: Checkout repository
         uses: actions/checkout@v4
 
