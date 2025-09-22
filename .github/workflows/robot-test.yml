@@ -22,9 +22,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-        
-      - name: Delete folder
-        run: rm -r output
           
       - name: Run Robot Framework tests
         working-directory: ./robotframework
