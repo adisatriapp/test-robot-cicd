@@ -42,7 +42,7 @@ jobs:
         with:
           gh_pages: gh-pages
           allure_history: ./output/allure
-          allure_results: allure-results
+          allure_results: robotframework/allure-results/
 
       - name: 🎁 Publishing Allure artifact to GitHub Actions
         uses: actions/upload-artifact@v4
@@ -55,7 +55,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages  # default: gh-pages
-          publish_dir: allure-results
+          publish_dir: robotframework/allure-results/
           # destination_dir: allure-results
       
       
