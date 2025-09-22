@@ -24,8 +24,7 @@ jobs:
           pip install -r requirements.txt
           
       - name: Run Robot Framework tests
-        working-directory: ./robotframework
-        run: robot --listener allure_robotframework --prerunmodifier allure_robotframework.testplan tests/
+        run: robot --listener allure_robotframework --prerunmodifier allure_robotframework.testplan robotframework/tests/
 
       - name: Load test report history
         uses: actions/checkout@v3
