@@ -42,20 +42,14 @@ jobs:
         with:
           gh_pages: gh-pages
           allure_history: ./output/allure
-          allure_results: robotframework/allure-results/
-
-      - name: 🎁 Publishing Allure artifact to GitHub Actions
-        uses: actions/upload-artifact@v4
-        with:
-          name: my_reports
-          path: my_reports
+          allure_results: allure-results/
           
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages  # default: gh-pages
-          publish_dir: robotframework/allure-results/
+          publish_dir: allure-results/
           # destination_dir: allure-results
       
       
