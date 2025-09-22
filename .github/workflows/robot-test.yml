@@ -26,13 +26,20 @@ jobs:
       - name: Run Robot Framework tests
         run: robot --listener allure_robotframework --prerunmodifier allure_robotframework.testplan robotframework/tests/
 
-      - name: Generate Allure report
-        run: allure generate .\robotframework\output\allure\
-  
-      - name: Publish test report
+      - name: 📊 Collect Allure files and generate allure-report folder
+        run: |
+          allure generate ./output/allure -o allure-results/
+          
+      - name: 🎁 Publishing Allure artifact to GitHub Actions
+        uses: actions/upload-artifact@v3
+        with:
+          name: my_reports
+          path: my_reports
+          
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
-        if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-report
+          publish_branch: gh-pages  # default: gh-pages
+          publish_dir: allure-results
+          destination_dir: allure-results
