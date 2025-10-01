@@ -11,13 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 16
-      - name: Install operating system dependencies
-        run: |
-          npm install -g allure-commandline --save-dev 
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -33,23 +26,26 @@ jobs:
       - name: Run Robot Framework tests
         run: robot --listener allure_robotframework --prerunmodifier allure_robotframework.testplan robotframework/tests/
 
-      # - name: 📊 Collect Allure files and generate allure-report folder
-      #   run: |
-      #     allure generate ./output/allure -o allure-results/
+      - name: Load test report history
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+  
       - name: Build test report
         uses: simple-elf/allure-report-action@v1.7
         if: always()
         with:
           gh_pages: gh-pages
-          allure_history: ./output/allure
-          allure_results: allure-results/
-          
-      - name: Deploy
+          allure_history: allure-history
+          allure_results: build/allure-results
+  
+      - name: Publish test report
         uses: peaceiris/actions-gh-pages@v4
+        if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages  # default: gh-pages
-          publish_dir: allure-results/
-          # destination_dir: allure-results
-      
-      
+          publish_branch: gh-pages
+          publish_dir: allure-history
